@@ -1,0 +1,1956 @@
+{
+	"info": {
+		"_postman_id": "09def6de-67a2-4c48-85ed-59f63bd017e5",
+		"name": "AI102",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "4125999",
+		"_collection_link": "https://gold-astronaut-305361.postman.co/workspace/AI-102-MTTs~6d66e94c-e0e4-429a-b12f-a0d7f0c4f125/collection/4125999-09def6de-67a2-4c48-85ed-59f63bd017e5?action=share&creator=4125999&source=collection_link"
+	},
+	"item": [
+		{
+			"name": "M02 Container",
+			"item": [
+				{
+					"name": "Text Analytics Language (ACI)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"documents\": [\r\n    {\r\n      \"text\": \"Microsoft is located at Redmond, WA.\",\r\n      \"id\": \"1\"\r\n    },\r\n    {\r\n      \"text\": \"Bonjour tout le monde\",\r\n      \"id\": \"2\"\r\n    },\r\n    {\r\n      \"text\": \"La carretera estaba atascada. Había mucho tráfico el día de ayer.\",\r\n      \"id\": \"3\"\r\n    }\r\n  ]\r\n}"
+						},
+						"url": {
+							"raw": "http://20.42.30.204:5000/text/analytics/v3.0/languages?model-version=latest",
+							"protocol": "http",
+							"host": [
+								"20",
+								"42",
+								"30",
+								"204"
+							],
+							"port": "5000",
+							"path": [
+								"text",
+								"analytics",
+								"v3.0",
+								"languages"
+							],
+							"query": [
+								{
+									"key": "model-version",
+									"value": "latest"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Text Analytics Language (Local)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"documents\": [\r\n    {\r\n      \"text\": \"Microsoft is located at Redmond, WA.\",\r\n      \"id\": \"1\"\r\n    },\r\n    {\r\n      \"text\": \"Bonjour tout le monde\",\r\n      \"id\": \"2\"\r\n    },\r\n    {\r\n      \"text\": \"La carretera estaba atascada. Había mucho tráfico el día de ayer.\",\r\n      \"id\": \"3\"\r\n    }\r\n  ]\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:5000/text/analytics/v3.0/languages?",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"text",
+								"analytics",
+								"v3.0",
+								"languages"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "M03 Language Service (NEW)",
+			"item": [
+				{
+					"name": "Detect Language",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Ocp-Apim-Subscription-Key",
+								"value": "{{LanguageServiceKey}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"kind\": \"LanguageDetection\",\r\n    \"parameters\": {\r\n        \"modelVersion\": \"latest\"\r\n    },\r\n    \"analysisInput\":{\r\n        \"documents\":[\r\n            {\r\n                \"id\":\"1\",\r\n                \"text\": \"This is a document written in English.\"\r\n            }\r\n        ]\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{LanguageService}}/language/:analyze-text?api-version=2022-05-01",
+							"host": [
+								"{{LanguageService}}"
+							],
+							"path": [
+								"language",
+								":analyze-text"
+							],
+							"query": [
+								{
+									"key": "api-version",
+									"value": "2022-05-01"
+								}
+							],
+							"variable": [
+								{
+									"key": "analyze-text",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Key Phrase extraction",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Ocp-Apim-Subscription-Key",
+								"value": "{{LanguageServiceKey}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"kind\": \"KeyPhraseExtraction\",\r\n    \"parameters\": {\r\n        \"modelVersion\": \"latest\"\r\n    },\r\n    \"analysisInput\":{\r\n        \"documents\":[\r\n            {\r\n                \"id\":\"1\",\r\n                \"language\":\"en\",\r\n                \"text\": \"Dr. Smith has a very modern medical office, and she has great staff.\"\r\n            }\r\n        ]\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{LanguageService}}/language/:analyze-text?api-version=2022-05-01",
+							"host": [
+								"{{LanguageService}}"
+							],
+							"path": [
+								"language",
+								":analyze-text"
+							],
+							"query": [
+								{
+									"key": "api-version",
+									"value": "2022-05-01"
+								}
+							],
+							"variable": [
+								{
+									"key": "analyze-text",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Sentiment",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Ocp-Apim-Subscription-Key",
+								"value": "{{LanguageServiceKey}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"kind\": \"SentimentAnalysis\",\r\n    \"parameters\": {\r\n        \"modelVersion\": \"latest\"\r\n    },\r\n    \"analysisInput\":{\r\n        \"documents\":[\r\n            {\r\n                \"id\":\"1\",\r\n                \"language\":\"en\",\r\n                \"text\": \"Dr. Smith has a very modern medical office, and she has great staff.\"\r\n            }\r\n        ]\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{LanguageService}}/language/:analyze-text?api-version=2022-05-01",
+							"host": [
+								"{{LanguageService}}"
+							],
+							"path": [
+								"language",
+								":analyze-text"
+							],
+							"query": [
+								{
+									"key": "api-version",
+									"value": "2022-05-01"
+								}
+							],
+							"variable": [
+								{
+									"key": "analyze-text",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Sentiment (opinion mining)",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Ocp-Apim-Subscription-Key",
+								"value": "{{LanguageServiceKey}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"kind\": \"SentimentAnalysis\",\r\n    \"parameters\": {\r\n        \"modelVersion\": \"latest\",\r\n        \"opinionMining\": \"true\"\r\n    },\r\n    \"analysisInput\":{\r\n        \"documents\":[\r\n            {\r\n                \"id\":\"1\",\r\n                \"language\":\"en\",\r\n                \"text\": \"Dr. Smith has a very modern medical office, and she has great staff.\"\r\n            }\r\n        ]\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{LanguageService}}/language/:analyze-text?api-version=2022-05-01",
+							"host": [
+								"{{LanguageService}}"
+							],
+							"path": [
+								"language",
+								":analyze-text"
+							],
+							"query": [
+								{
+									"key": "api-version",
+									"value": "2022-05-01"
+								}
+							],
+							"variable": [
+								{
+									"key": "analyze-text",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "M03 Text Analytics v3.1",
+			"item": [
+				{
+					"name": "Detect Language",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Ocp-Apim-Subscription-Key",
+								"value": "{{LanguageServiceKey}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"documents\": [\r\n    {\r\n      \"id\": \"1\",\r\n      \"text\": \"الكورس بصراحة ممتع - شكرا يا يوناى\",\r\n      \"countryHint\": \"\"\r\n    }\r\n  ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{LanguageService}}/text/analytics/v3.1/languages",
+							"host": [
+								"{{LanguageService}}"
+							],
+							"path": [
+								"text",
+								"analytics",
+								"v3.1",
+								"languages"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Key Phrase extraction",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Ocp-Apim-Subscription-Key",
+								"value": "{{LanguageServiceKey}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"documents\": [\r\n    {\r\n      \"id\": \"1\",\r\n      \"text\": \"Clean rooms, good service, great location near Buckingham Palace and Westminster Abbey, and so on. We thoroughly enjoyed our stay. The courtyard is very peaceful and we went to a restaurant which is part of the same group and is Indian ( West coast so plenty of fish) with a Michelin Star. We had the taster menu which was fabulous. The rooms were very well appointed with a kitchen, lounge, bedroom and enormous bathroom. Thoroughly recommended\",\r\n      \"language\": \"en\"\r\n    }\r\n  ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{LanguageService}}/text/analytics/v3.1/keyPhrases",
+							"host": [
+								"{{LanguageService}}"
+							],
+							"path": [
+								"text",
+								"analytics",
+								"v3.1",
+								"keyPhrases"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Sentiment",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Ocp-Apim-Subscription-Key",
+								"value": "{{LanguageServiceKey}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"documents\": [\r\n    {\r\n      \"id\": \"1\",\r\n      \"text\": \"Clean rooms, good service, great location near Buckingham Palace and Westminster Abbey, and so on.  Thoroughly recommended\",\r\n      \"language\": \"en\"\r\n    }\r\n  ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://langauge-completedemo.cognitiveservices.azure.com/text/analytics/v3.1/sentiment?stringIndexType=TextElement_v8",
+							"protocol": "https",
+							"host": [
+								"langauge-completedemo",
+								"cognitiveservices",
+								"azure",
+								"com"
+							],
+							"path": [
+								"text",
+								"analytics",
+								"v3.1",
+								"sentiment"
+							],
+							"query": [
+								{
+									"key": "stringIndexType",
+									"value": "TextElement_v8"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Sentiment Opinion Mining (wordbyword target section)",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Ocp-Apim-Subscription-Key",
+								"value": "{{LanguageServiceKey}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"documents\": [\r\n    {\r\n      \"id\": \"1\",\r\n      \"text\": \"Clean rooms, good service, great location near Buckingham Palace and Westminster Abbey, and so on.\",\r\n      \"language\": \"en\"\r\n    }\r\n  ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{LanguageService}}/text/analytics/v3.1/sentiment?opinionMining=true",
+							"host": [
+								"{{LanguageService}}"
+							],
+							"path": [
+								"text",
+								"analytics",
+								"v3.1",
+								"sentiment"
+							],
+							"query": [
+								{
+									"key": "opinionMining",
+									"value": "true"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Named entities recognition NER",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Ocp-Apim-Subscription-Key",
+								"value": "{{LanguageServiceKey}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"documents\": [\r\n    {\r\n      \"id\": \"1\",\r\n      \"text\": \"Clean rooms, good service, great location near Buckingham Palace and Westminster Abbey, and so on. We thoroughly enjoyed our stay. The courtyard is very peaceful and we went to a restaurant which is part of the same group and is Indian ( West coast so plenty of fish) with a Michelin Star. We had the taster menu which was fabulous. The rooms were very well appointed with a kitchen, lounge, bedroom and enormous bathroom. Thoroughly recommended\",\r\n      \"countryHint\": \"GB\"\r\n    }\r\n  ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{LanguageService}}/text/analytics/v3.1/entities/recognition/general?stringIndexType=TextElement_v8",
+							"host": [
+								"{{LanguageService}}"
+							],
+							"path": [
+								"text",
+								"analytics",
+								"v3.1",
+								"entities",
+								"recognition",
+								"general"
+							],
+							"query": [
+								{
+									"key": "stringIndexType",
+									"value": "TextElement_v8"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Linked Entities",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Ocp-Apim-Subscription-Key",
+								"value": "{{LanguageServiceKey}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"documents\": [\r\n    {\r\n      \"id\": \"1\",\r\n      \"text\": \"Clean rooms, good service, great location near Buckingham Palace and Westminster Abbey, and so on. We thoroughly enjoyed our stay. The courtyard is very peaceful and we went to a restaurant which is part of the same group and is Indian ( West coast so plenty of fish) with a Michelin Star. We had the taster menu which was fabulous. The rooms were very well appointed with a kitchen, lounge, bedroom and enormous bathroom. Thoroughly recommended\",\r\n      \"countryHint\": \"GB\"\r\n    }\r\n  ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{LanguageService}}/text/analytics/v3.1/entities/linking",
+							"host": [
+								"{{LanguageService}}"
+							],
+							"path": [
+								"text",
+								"analytics",
+								"v3.1",
+								"entities",
+								"linking"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "M03 Translator",
+			"item": [
+				{
+					"name": "Detect Language",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Ocp-Apim-Subscription-Key",
+								"value": "{{TranslatorServiceKey}}",
+								"type": "text"
+							},
+							{
+								"key": "Ocp-Apim-Subscription-Region",
+								"value": "{{TranslatorServiceRegion}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "[{'Text':'kaixo zer moduz'}]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{TranslatorServiceOld}}/detect?api-version=3.0",
+							"host": [
+								"{{TranslatorServiceOld}}"
+							],
+							"path": [
+								"detect"
+							],
+							"query": [
+								{
+									"key": "api-version",
+									"value": "3.0"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Translate (multi-target)",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Ocp-Apim-Subscription-Key",
+								"value": "{{TranslatorServiceKey}}",
+								"type": "text"
+							},
+							{
+								"key": "Ocp-Apim-Subscription-Region",
+								"value": "{{TranslatorServiceRegion}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "[{'Text':'Hello, what is your name?'}]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{TranslatorServiceOld}}/translate?api-version=3.0&from=en&to=es,fr&includeAlignment=true&includeSentenceLength=true",
+							"host": [
+								"{{TranslatorServiceOld}}"
+							],
+							"path": [
+								"translate"
+							],
+							"query": [
+								{
+									"key": "api-version",
+									"value": "3.0"
+								},
+								{
+									"key": "from",
+									"value": "en"
+								},
+								{
+									"key": "to",
+									"value": "es,fr"
+								},
+								{
+									"key": "includeAlignment",
+									"value": "true"
+								},
+								{
+									"key": "includeSentenceLength",
+									"value": "true"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Translate Profanity (tacos)",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Ocp-Apim-Subscription-Key",
+								"value": "{{TranslatorServiceKey}}",
+								"type": "text"
+							},
+							{
+								"key": "Ocp-Apim-Subscription-Region",
+								"value": "{{TranslatorServiceRegion}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "[{'Text':'Hello, what is your fucking name?'}]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{TranslatorServiceOld}}/translate?api-version=3.0&from=en&to=es&profanityAction=Marked",
+							"host": [
+								"{{TranslatorServiceOld}}"
+							],
+							"path": [
+								"translate"
+							],
+							"query": [
+								{
+									"key": "api-version",
+									"value": "3.0"
+								},
+								{
+									"key": "from",
+									"value": "en"
+								},
+								{
+									"key": "to",
+									"value": "es"
+								},
+								{
+									"key": "profanityAction",
+									"value": "Marked"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Translate (if from not specified, language detection applied first)",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Ocp-Apim-Subscription-Key",
+								"value": "{{TranslatorServiceKey}}",
+								"type": "text"
+							},
+							{
+								"key": "Ocp-Apim-Subscription-Region",
+								"value": "{{TranslatorServiceRegion}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "[{'Text':'Hello, what is your name?'}]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{TranslatorServiceOld}}/translate?api-version=3.0&to=es",
+							"host": [
+								"{{TranslatorServiceOld}}"
+							],
+							"path": [
+								"translate"
+							],
+							"query": [
+								{
+									"key": "api-version",
+									"value": "3.0"
+								},
+								{
+									"key": "to",
+									"value": "es"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Transliterate",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Ocp-Apim-Subscription-Key",
+								"value": "{{TranslatorServiceKey}}",
+								"type": "text"
+							},
+							{
+								"key": "Ocp-Apim-Subscription-Region",
+								"value": "{{TranslatorServiceRegion}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "[{'Text':'こんにちは、元気ですか'}]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{TranslatorServiceOld}}/transliterate?api-version=3.0&language=ja&fromScript=Jpan&toScript=Latn",
+							"host": [
+								"{{TranslatorServiceOld}}"
+							],
+							"path": [
+								"transliterate"
+							],
+							"query": [
+								{
+									"key": "api-version",
+									"value": "3.0"
+								},
+								{
+									"key": "language",
+									"value": "ja"
+								},
+								{
+									"key": "fromScript",
+									"value": "Jpan"
+								},
+								{
+									"key": "toScript",
+									"value": "Latn"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Supported Languages",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{TranslatorServiceOld}}/languages?api-version=3.0",
+							"host": [
+								"{{TranslatorServiceOld}}"
+							],
+							"path": [
+								"languages"
+							],
+							"query": [
+								{
+									"key": "api-version",
+									"value": "3.0"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "M05 Language Understanding (NEW)",
+			"item": [
+				{
+					"name": "STAGING Prediction Model",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Ocp-Apim-Subscription-Key",
+								"value": "{{LanguageServiceKey}}",
+								"type": "text"
+							},
+							{
+								"key": "Apim-Request-Id",
+								"value": "4ffcac1c-b2fc-48ba-bd6d-b69d9942995a",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"kind\": \"Conversation\",\r\n  \"analysisInput\": {\r\n    \"conversationItem\": {\r\n      \"id\": \"1\",\r\n      \"participantId\": \"1\",\r\n      \"text\": \"What time is it in San Sebastian\"\r\n    }\r\n  },\r\n  \"parameters\": {\r\n    \"projectName\": \"Clock-Multilanguage\",\r\n    \"deploymentName\": \"Staging\",\r\n    \"stringIndexType\": \"TextElement_V8\"\r\n  }\r\n}"
+						},
+						"url": {
+							"raw": "{{LanguageService}}/language/:analyze-conversations?api-version=2022-10-01-preview",
+							"host": [
+								"{{LanguageService}}"
+							],
+							"path": [
+								"language",
+								":analyze-conversations"
+							],
+							"query": [
+								{
+									"key": "api-version",
+									"value": "2022-10-01-preview"
+								}
+							],
+							"variable": [
+								{
+									"key": "analyze-conversations",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "M06 Question Answering",
+			"item": [
+				{
+					"name": "Custom question Answering (prod)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Ocp-Apim-Subscription-Key",
+								"value": "{{LanguageServiceKey}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n      \"question\": \"Are you my friend?\",\r\n      \"top\": 3\r\n    },\r\n    \"answerSpanRequest\": {\r\n      \"enable\": true,\r\n      \"confidenceScoreThreshold\": 0.3,\r\n      \"topAnswersWithSpan\": 1\r\n    },\r\n    \"filters\": {}\r\n    }"
+						},
+						"url": {
+							"raw": "{{LanguageService}}/language/:query-knowledgebases?projectName=QnA-Test&api-version=2021-10-01&deploymentName=production",
+							"host": [
+								"{{LanguageService}}"
+							],
+							"path": [
+								"language",
+								":query-knowledgebases"
+							],
+							"query": [
+								{
+									"key": "projectName",
+									"value": "QnA-Test"
+								},
+								{
+									"key": "api-version",
+									"value": "2021-10-01"
+								},
+								{
+									"key": "deploymentName",
+									"value": "production"
+								}
+							],
+							"variable": [
+								{
+									"key": "query-knowledgebases",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Custom question Answering (Test-Portal)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Ocp-Apim-Subscription-Key",
+								"value": "{{LanguageServiceKey}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n      \"question\": \"what is the data privacy for openai\",\r\n      \"top\": 3\r\n    },\r\n    \"answerSpanRequest\": {\r\n      \"enable\": true,\r\n      \"confidenceScoreThreshold\": 0.6,\r\n      \"topAnswersWithSpan\": 1\r\n    },\r\n    \"filters\": {}\r\n    }"
+						},
+						"url": {
+							"raw": "{{LanguageService}}/language/:query-knowledgebases?projectName=QnA-Test&api-version=2021-10-01&deploymentName=test",
+							"host": [
+								"{{LanguageService}}"
+							],
+							"path": [
+								"language",
+								":query-knowledgebases"
+							],
+							"query": [
+								{
+									"key": "projectName",
+									"value": "QnA-Test"
+								},
+								{
+									"key": "api-version",
+									"value": "2021-10-01"
+								},
+								{
+									"key": "deploymentName",
+									"value": "test"
+								}
+							],
+							"variable": [
+								{
+									"key": "query-knowledgebases",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "M08 Computer Vision",
+			"item": [
+				{
+					"name": "Analyze Image",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Ocp-Apim-Subscription-Key",
+								"value": "{{ComputerVisionKey}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"url\": \"https://th.bing.com/th/id/OIP.3IPAJQaeDzX1a6PVZr1QpgHaHa?pid=ImgDet&rs=1\"\r\n}"
+						},
+						"url": {
+							"raw": "{{ComputerVisionService}}/computervision/imageanalysis:analyze?api-version=2023-02-01-preview&features=objects",
+							"host": [
+								"{{ComputerVisionService}}"
+							],
+							"path": [
+								"computervision",
+								"imageanalysis:analyze"
+							],
+							"query": [
+								{
+									"key": "api-version",
+									"value": "2023-02-01-preview"
+								},
+								{
+									"key": "features",
+									"value": "objects"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "M09 Custom Vision",
+			"item": [
+				{
+					"name": "Dog or Cat Classify",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Prediction-Key",
+								"value": "{{CustomVisionPredictionKey}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"Url\": \"https://th.bing.com/th/id/OIP.a_t-j5yIf8mjlSPmVkbt8gHaF7?pid=ImgDet&rs=1\"}"
+						},
+						"url": {
+							"raw": "{{CustomVisionPrediction}}/customvision/v3.0/Prediction/b06ac24b-a96a-490c-9f1b-ec17ac34229a/classify/iterations/Iteration1/url",
+							"host": [
+								"{{CustomVisionPrediction}}"
+							],
+							"path": [
+								"customvision",
+								"v3.0",
+								"Prediction",
+								"b06ac24b-a96a-490c-9f1b-ec17ac34229a",
+								"classify",
+								"iterations",
+								"Iteration1",
+								"url"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Fruits detect",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Prediction-Key",
+								"value": "{{CustomVisionPredictionKey}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"Url\": \"https://th.bing.com/th/id/R.ac1b23a0ba828a2d2fe5e1d3cec4e757?rik=jk3ZsYadJeoH9g&riu=http%3a%2f%2f4.bp.blogspot.com%2f-E6Gvfier5wY%2fUJbsEAE-9hI%2fAAAAAAAAA6I%2fcquMfzW5zv0%2fs1600%2fapple%2bbanana.jpg&ehk=hA%2b5DDil0WbRtLKTW0mR%2fFQDlQQpGi80%2bdv9HgJebH4%3d&risl=&pid=ImgRaw&r=0\"}"
+						},
+						"url": {
+							"raw": "{{CustomVisionPrediction}}/customvision/v3.0/Prediction/006a45c1-e204-4e36-970c-b86fc4813c06/detect/iterations/Iteration1/url",
+							"host": [
+								"{{CustomVisionPrediction}}"
+							],
+							"path": [
+								"customvision",
+								"v3.0",
+								"Prediction",
+								"006a45c1-e204-4e36-970c-b86fc4813c06",
+								"detect",
+								"iterations",
+								"Iteration1",
+								"url"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "M10 FACE",
+			"item": [
+				{
+					"name": "Detect (Get FaceId)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Ocp-Apim-Subscription-Key",
+								"value": "{{FaceServiceKey}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"url\": \"https://cdn.realsociedad.eus/Uploads/jugadores/barrene2.png\"\r\n}"
+						},
+						"url": {
+							"raw": "{{FaceService}}/face/v1.0/detect?returnFaceId=true&returnFaceLandmarks=true&recognitionModel=recognition_04&returnRecognitionModel=false&detectionModel=detection_03&faceIdTimeToLive=86400",
+							"host": [
+								"{{FaceService}}"
+							],
+							"path": [
+								"face",
+								"v1.0",
+								"detect"
+							],
+							"query": [
+								{
+									"key": "returnFaceId",
+									"value": "true"
+								},
+								{
+									"key": "returnFaceLandmarks",
+									"value": "true"
+								},
+								{
+									"key": "returnFaceAttributes",
+									"value": "true",
+									"disabled": true
+								},
+								{
+									"key": "recognitionModel",
+									"value": "recognition_04"
+								},
+								{
+									"key": "returnRecognitionModel",
+									"value": "false"
+								},
+								{
+									"key": "detectionModel",
+									"value": "detection_03"
+								},
+								{
+									"key": "faceIdTimeToLive",
+									"value": "86400"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Verify (compare 2 FaceIds)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Ocp-Apim-Subscription-Key",
+								"value": "{{FaceServiceKey}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"faceId1\": \"6b970afd-1341-4b38-9fd3-0e3b72f1e1f0\",\r\n    \"faceId2\":\"2183775b-7b6b-48ad-804b-c3d85056a5d0\"\r\n}"
+						},
+						"url": {
+							"raw": "{{FaceService}}/face/v1.0/verify",
+							"host": [
+								"{{FaceService}}"
+							],
+							"path": [
+								"face",
+								"v1.0",
+								"verify"
+							],
+							"query": [
+								{
+									"key": "returnFaceAttributes",
+									"value": "true",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PersonGroup Group Create",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Ocp-Apim-Subscription-Key",
+								"value": "{{FaceServiceKey}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Real Sociedad Football Club\",\r\n    \"userData\": \"Best football team ever\",\r\n    \"recognitionModel\": \"recognition_03\"\r\n}"
+						},
+						"url": {
+							"raw": "{{FaceService}}/face/v1.0/persongroups/realsociedad",
+							"host": [
+								"{{FaceService}}"
+							],
+							"path": [
+								"face",
+								"v1.0",
+								"persongroups",
+								"realsociedad"
+							],
+							"query": [
+								{
+									"key": "returnFaceAttributes",
+									"value": "true",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PersonGroup Person Create (Player)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Ocp-Apim-Subscription-Key",
+								"value": "{{FaceServiceKey}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Mikel Merino\",\r\n    \"userData\": \"Number 8\"\r\n}"
+						},
+						"url": {
+							"raw": "{{FaceService}}/face/v1.0/persongroups/realsociedad/persons",
+							"host": [
+								"{{FaceService}}"
+							],
+							"path": [
+								"face",
+								"v1.0",
+								"persongroups",
+								"realsociedad",
+								"persons"
+							],
+							"query": [
+								{
+									"key": "returnFaceAttributes",
+									"value": "true",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PersonGroup Person List",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Ocp-Apim-Subscription-Key",
+								"value": "{{FaceServiceKey}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Mikel Oyarzabal\",\r\n    \"userData\": \"Captain 1 - Number 10\"\r\n}"
+						},
+						"url": {
+							"raw": "{{FaceService}}/face/v1.0/persongroups/realsociedad/persons",
+							"host": [
+								"{{FaceService}}"
+							],
+							"path": [
+								"face",
+								"v1.0",
+								"persongroups",
+								"realsociedad",
+								"persons"
+							],
+							"query": [
+								{
+									"key": "returnFaceAttributes",
+									"value": "true",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PersonGroup Person Add Face (picture)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Ocp-Apim-Subscription-Key",
+								"value": "{{FaceServiceKey}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"url\": \"https://th.bing.com/th/id/R.0a530f055709a505b793dcecc1b7771f?rik=a7tEh8ZdTuycLQ&pid=ImgRaw&r=0\"\r\n}"
+						},
+						"url": {
+							"raw": "{{FaceService}}/face/v1.0/persongroups/realsociedad/persons/90dc9d35-3d52-4bc6-a109-e014f21d4f60/persistedFaces",
+							"host": [
+								"{{FaceService}}"
+							],
+							"path": [
+								"face",
+								"v1.0",
+								"persongroups",
+								"realsociedad",
+								"persons",
+								"90dc9d35-3d52-4bc6-a109-e014f21d4f60",
+								"persistedFaces"
+							],
+							"query": [
+								{
+									"key": "returnFaceAttributes",
+									"value": "true",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PersonGroup Train",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Ocp-Apim-Subscription-Key",
+								"value": "{{FaceServiceKey}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{FaceService}}/face/v1.0/persongroups/realsociedad/train",
+							"host": [
+								"{{FaceService}}"
+							],
+							"path": [
+								"face",
+								"v1.0",
+								"persongroups",
+								"realsociedad",
+								"train"
+							],
+							"query": [
+								{
+									"key": "returnFaceAttributes",
+									"value": "true",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Identify (PersonGroup needed)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Ocp-Apim-Subscription-Key",
+								"value": "{{FaceServiceKey}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"PersonGroupId\": \"realsociedad\",\r\n    \"faceIds\": [\r\n        \"96477a2e-2bd2-4fd2-bd0b-2b29fd75e7f0\"\r\n    ],\r\n    \"maxNumOfCandidatesReturned\": 1,\r\n    \"confidenceThreshold\": 0.5\r\n}"
+						},
+						"url": {
+							"raw": "{{FaceService}}/face/v1.0/identify",
+							"host": [
+								"{{FaceService}}"
+							],
+							"path": [
+								"face",
+								"v1.0",
+								"identify"
+							],
+							"query": [
+								{
+									"key": "returnFaceAttributes",
+									"value": "true",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "M11 Vision READ API",
+			"item": [
+				{
+					"name": "READ REQUEST",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Ocp-Apim-Subscription-Key",
+								"value": "{{ComputerVisionKey}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"url\": \"https://th.bing.com/th/id/OIP.3IPAJQaeDzX1a6PVZr1QpgHaHa?pid=ImgDet&rs=1\"\r\n}"
+						},
+						"url": {
+							"raw": "{{ComputerVisionService}}/vision/v3.2/read/analyze?language=en",
+							"host": [
+								"{{ComputerVisionService}}"
+							],
+							"path": [
+								"vision",
+								"v3.2",
+								"read",
+								"analyze"
+							],
+							"query": [
+								{
+									"key": "language",
+									"value": "en"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "READ GET",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Ocp-Apim-Subscription-Key",
+								"value": "{{ComputerVisionKey}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"url\": \"https://th.bing.com/th/id/OIP.3IPAJQaeDzX1a6PVZr1QpgHaHa?pid=ImgDet&rs=1\"\r\n}"
+						},
+						"url": {
+							"raw": "{{READoperationid}}",
+							"host": [
+								"{{READoperationid}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "M11 Document Intelligence",
+			"item": [
+				{
+					"name": "prebuilt-read START",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Ocp-Apim-Subscription-Key",
+								"value": "{{FormRecognizerKey}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"urlSource\": \"https://raw.githubusercontent.com/Azure-Samples/cognitive-services-REST-api-samples/master/curl/form-recognizer/rest-api/read.png\"\r\n}"
+						},
+						"url": {
+							"raw": "{{FormRecognizerEnd}}/formrecognizer/documentModels/prebuilt-read:analyze?api-version=2023-07-31&stringIndexType=textElements",
+							"host": [
+								"{{FormRecognizerEnd}}"
+							],
+							"path": [
+								"formrecognizer",
+								"documentModels",
+								"prebuilt-read:analyze"
+							],
+							"query": [
+								{
+									"key": "api-version",
+									"value": "2023-07-31"
+								},
+								{
+									"key": "stringIndexType",
+									"value": "textElements"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "prebuilt-read GET",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Ocp-Apim-Subscription-Key",
+								"value": "{{FormRecognizerKey}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{}"
+						},
+						"url": {
+							"raw": "{{Prebuild-Read-OperationLocation}}",
+							"host": [
+								"{{Prebuild-Read-OperationLocation}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "prebuilt-invoice START",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Ocp-Apim-Subscription-Key",
+								"value": "{{FormRecognizerKey}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"urlSource\": \"https://raw.githubusercontent.com/Azure-Samples/cognitive-services-REST-api-samples/master/curl/form-recognizer/invoice_sample.jpg\"\r\n}"
+						},
+						"url": {
+							"raw": "{{FormRecognizerEnd}}/formrecognizer/documentModels/prebuilt-invoice:analyze?api-version=2023-07-31&stringIndexType=textElements",
+							"host": [
+								"{{FormRecognizerEnd}}"
+							],
+							"path": [
+								"formrecognizer",
+								"documentModels",
+								"prebuilt-invoice:analyze"
+							],
+							"query": [
+								{
+									"key": "api-version",
+									"value": "2023-07-31"
+								},
+								{
+									"key": "stringIndexType",
+									"value": "textElements"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "prebuilt-invoice GET",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Ocp-Apim-Subscription-Key",
+								"value": "{{FormRecognizerKey}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"urlSource\": \"https://raw.githubusercontent.com/Azure-Samples/cognitive-services-REST-api-samples/master/curl/form-recognizer/invoice_sample.jpg\"\r\n}"
+						},
+						"url": {
+							"raw": "{{Prebuilt-Invoice-OperationLocation}}",
+							"host": [
+								"{{Prebuilt-Invoice-OperationLocation}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Azure OpenAI",
+			"item": [
+				{
+					"name": "Completion Endpoint",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "api-key",
+								"value": "{{AzureOpenAIKey}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"prompt\": \" Spanish: Hola \\n Basque:  \",\r\n  \"max_tokens\": 3\r\n}\r\n"
+						},
+						"url": {
+							"raw": "{{AzureOpenAIEndpoint}}/openai/deployments/{{CompletionDeploymentModel}}/completions?api-version=2022-12-01",
+							"host": [
+								"{{AzureOpenAIEndpoint}}"
+							],
+							"path": [
+								"openai",
+								"deployments",
+								"{{CompletionDeploymentModel}}",
+								"completions"
+							],
+							"query": [
+								{
+									"key": "api-version",
+									"value": "2022-12-01"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Chat Completion Endpoint",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "api-key",
+								"value": "{{AzureOpenAIKey}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"messages\":[\r\n    {\"role\": \"system\",\r\n     \"content\": \"You are an assistant that teaches people about AI.\"},\r\n    {\"role\": \"user\",\r\n     \"content\": \"Does Azure OpenAI support multiple languages?\"},\r\n    {\"role\": \"assistant\",\r\n     \"content\": \"Yes, Azure OpenAI supports several languages.\"},\r\n    {\"role\": \"user\",\r\n     \"content\": \"Do other Cognitive Services support translation?\"}\r\n  ]\r\n}\r\n"
+						},
+						"url": {
+							"raw": "{{AzureOpenAIEndpoint}}/openai/deployments/{{CompletionDeploymentModel}}/chat/completions?api-version=2023-05-15",
+							"host": [
+								"{{AzureOpenAIEndpoint}}"
+							],
+							"path": [
+								"openai",
+								"deployments",
+								"{{CompletionDeploymentModel}}",
+								"chat",
+								"completions"
+							],
+							"query": [
+								{
+									"key": "api-version",
+									"value": "2023-05-15"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Embedding Endpoint",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "api-key",
+								"value": "{{AzureOpenAIKey}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"input\": \"The food was delicious and the waiter was very friendly...\"\r\n}\r\n"
+						},
+						"url": {
+							"raw": "{{AzureOpenAIEndpoint}}/openai/deployments/{{EmbeddingDeploymentModel}}/embeddings?api-version=2023-05-15",
+							"host": [
+								"{{AzureOpenAIEndpoint}}"
+							],
+							"path": [
+								"openai",
+								"deployments",
+								"{{EmbeddingDeploymentModel}}",
+								"embeddings"
+							],
+							"query": [
+								{
+									"key": "api-version",
+									"value": "2023-05-15"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Image Generation SUBMIT",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "api-key",
+								"value": "{{AzureOpenAIKey}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"prompt\": \"Dog wearing Real Sociedad jersey\",\r\n    \"n\": 1,\r\n    \"size\": \"1024x1024\"\r\n}\r\n"
+						},
+						"url": {
+							"raw": "{{AzureOpenAIEndpoint}}/openai/images/generations:submit?api-version=2023-06-01-preview",
+							"host": [
+								"{{AzureOpenAIEndpoint}}"
+							],
+							"path": [
+								"openai",
+								"images",
+								"generations:submit"
+							],
+							"query": [
+								{
+									"key": "api-version",
+									"value": "2023-06-01-preview"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Image Generation GET",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "api-key",
+								"value": "{{AzureOpenAIKey}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"prompt\": \"Dog wearing Real Sociedad jersey\",\r\n    \"n\": 1,\r\n    \"size\": \"1024x1024\"\r\n}\r\n"
+						},
+						"url": {
+							"raw": "{{DALLE-Operation-Location}}",
+							"host": [
+								"{{DALLE-Operation-Location}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "READoperationid",
+			"value": "Operation-Location"
+		},
+		{
+			"key": "OperationId",
+			"value": "apim-request-id"
+		},
+		{
+			"key": "DALLE-Operation-Location",
+			"value": "https://azureopenai-unai.openai.azure.com/openai/operations/images/75a72168-a9e6-4a12-a9cb-8b1cf45027df?api-version=2023-06-01-preview"
+		},
+		{
+			"key": "Prebuild-Read-OperationLocation",
+			"value": "https://ai102formrecognizerunai.cognitiveservices.azure.com/formrecognizer/documentModels/prebuilt-read/analyzeResults/aca9add9-70c8-419b-942d-910fa2d93b12?api-version=2023-07-31"
+		},
+		{
+			"key": "Prebuilt-Invoice-OperationLocation",
+			"value": "https://ai102formrecognizerunai.cognitiveservices.azure.com/formrecognizer/documentModels/prebuilt-invoice/analyzeResults/481d4f4a-3806-408a-bf8c-5f66b8028607?api-version=2023-07-31"
+		}
+	]
+}
