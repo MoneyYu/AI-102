@@ -1,5 +1,5 @@
 ---
-image: https://images.credly.com/size/680x680/images/61f56aa4-16fd-403c-90bc-1d90dba1fa99/image.png
+image: https://learn.microsoft.com/en-us/training/achievements/develop-ai-solutions-azure-openai.svg
 tags: AI-102, Reference
 GA: G-DXYJBX6BH8
 ---
@@ -240,6 +240,31 @@ Valid for 6 months
 [Azure OpenAI Service powers the Microsoft Copilot ecosystem](https://azure.microsoft.com/en-us/blog/azure-openai-service-powers-the-microsoft-copilot-ecosystem/)
 
 [Microsoft CoPilot vs AzureAI/ChatGPT - The Differences Everyone Needs to Know About](https://www.linkedin.com/pulse/microsoft-copilot-vs-azureaichatgpt-differences-needs-rand-morimoto/)
+
+#### Build natural language solutions with Azure OpenAI Service
+[Azure OpenAI supported programming languages SDKs](https://learn.microsoft.com/en-us/azure/ai-services/openai/supported-languages)
+
+[Understand embeddings in Azure OpenAI Service](https://learn.microsoft.com/en-us/azure/ai-services/openai/concepts/understand-embeddings)
+
+[Quickstart: Get started using GPT-35-Turbo and GPT-4 with Azure OpenAI Service](https://learn.microsoft.com/en-us/azure/ai-services/openai/chatgpt-quickstart?tabs=command-line%2Cpython&pivots=programming-language-studio)
+
+[Quickstart: Get started generating text using Azure OpenAI Service](https://learn.microsoft.com/en-us/azure/ai-services/openai/quickstart?tabs=command-line%2Cpython&pivots=programming-language-studio)
+
+#### Apply prompt engineering with Azure OpenAI Service
+[Introduction to prompt engineering](https://learn.microsoft.com/en-us/azure/ai-services/openai/concepts/prompt-engineering)
+
+[Prompt engineering techniques](https://learn.microsoft.com/en-us/azure/ai-services/openai/concepts/advanced-prompt-engineering?pivots=programming-language-chat-completions)
+
+[Introduction to prompt engineering with GPT-4 Turbo with Vision](https://learn.microsoft.com/en-us/azure/ai-services/openai/concepts/gpt-4-v-prompt-engineering)
+
+[System message framework and template recommendations for Large Language Models (LLMs)](https://learn.microsoft.com/en-us/azure/ai-services/openai/concepts/system-message)
+
+#### Use your own data with Azure OpenAI Service
+[Azure OpenAI On Your Data](https://learn.microsoft.com/en-us/azure/ai-services/openai/concepts/use-your-data?tabs=ai-search)
+
+[Azure OpenAI on your data with images using GPT-4 Turbo with Vision (preview) in Azure OpenAI studio](https://learn.microsoft.com/en-us/azure/ai-services/openai/concepts/use-your-image-data)
+
+[Quickstart: Chat with Azure OpenAI models using your own data](https://learn.microsoft.com/en-us/azure/ai-services/openai/use-your-data-quickstart?tabs=command-line%2Cpython&pivots=programming-language-studio)
 
 ### M05 - Knowledge Mining
 
