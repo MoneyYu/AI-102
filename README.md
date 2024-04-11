@@ -267,8 +267,80 @@ Valid for 6 months
 [Quickstart: Chat with Azure OpenAI models using your own data](https://learn.microsoft.com/en-us/azure/ai-services/openai/use-your-data-quickstart?tabs=command-line%2Cpython&pivots=programming-language-studio)
 
 ### M05 - Knowledge Mining
+[What's Azure AI Search?](https://learn.microsoft.com/en-us/azure/search/search-what-is-azure-search)
+
+[Azure AI Search pricing](https://azure.microsoft.com/en-us/pricing/details/search/)
+
+[Choose a service tier for Azure AI Search](https://learn.microsoft.com/en-us/azure/search/search-sku-tier)
+
+[Estimate and manage capacity of a search service](https://learn.microsoft.com/en-us/azure/search/search-capacity-planning)
+
+[Plan and manage costs of an Azure AI Search service](https://learn.microsoft.com/en-us/azure/search/search-sku-manage-costs)
+
+[Data sources gallery](https://learn.microsoft.com/en-us/azure/search/search-data-sources-gallery)
+
+[Skills for extra processing during indexing (Azure AI Search)](https://learn.microsoft.com/en-us/azure/search/cognitive-search-predefined-skills)
+
+[Create a skillset in Azure AI Search](https://learn.microsoft.com/en-us/azure/search/cognitive-search-defining-skillset)
+
+[Attach an Azure AI multi-service resource to a skillset in Azure AI Search](https://learn.microsoft.com/en-us/azure/search/cognitive-search-attach-cognitive-services)
+
+[Simple query syntax in Azure AI Search](https://learn.microsoft.com/en-us/azure/search/query-simple-syntax)
+
+[Retrieval Augmented Generation (RAG) in Azure AI Search](https://learn.microsoft.com/en-us/azure/search/retrieval-augmented-generation-overview)
+
+[Search indexes in Azure AI Search](https://learn.microsoft.com/en-us/azure/search/search-what-is-an-index)
+
+[Vector storage in Azure AI Search](https://learn.microsoft.com/en-us/azure/search/vector-store)
+
+[Knowledge store in Azure AI Search](https://learn.microsoft.com/en-us/azure/search/knowledge-store-concept-intro?tabs=portal)
+
+[Shaper cognitive skill](https://learn.microsoft.com/en-us/azure/search/cognitive-search-skill-shaper)
+
+[Data import in Azure AI Search](https://learn.microsoft.com/en-us/azure/search/search-what-is-data-import)
+
+[AI enrichment in Azure AI Search](https://learn.microsoft.com/en-us/azure/search/cognitive-search-concept-intro)
+
+[Full text search in Azure AI Search](https://learn.microsoft.com/en-us/azure/search/search-lucene-query-architecture)
+
+[Vectors in Azure AI Search](https://learn.microsoft.com/en-us/azure/search/vector-search-overview)
+
+[Hybrid search using vectors and full text in Azure AI Search](https://learn.microsoft.com/en-us/azure/search/hybrid-search-overview)
+
+[Create an index in Azure AI Search](https://learn.microsoft.com/en-us/azure/search/search-how-to-create-search-index?tabs=portal)
 
 ### M06 - Document Intelligence
+[What is Azure AI Document Intelligence?](https://learn.microsoft.com/en-us/azure/ai-services/document-intelligence/overview?view=doc-intel-4.0.0)
+
+[Document processing models](https://learn.microsoft.com/en-us/azure/ai-services/document-intelligence/concept-model-overview?view=doc-intel-4.0.0)
+
+[Which model should I choose?](https://learn.microsoft.com/en-us/azure/ai-services/document-intelligence/choose-model-feature?view=doc-intel-4.0.0)
+
+[Azure AI Document Intelligence pricing](https://azure.microsoft.com/en-us/pricing/details/ai-document-intelligence/)
+
+[Get started with Document Intelligence](https://learn.microsoft.com/en-us/azure/ai-services/document-intelligence/quickstarts/get-started-sdks-rest-api)
+
+[Custom models: accuracy and confidence scores](https://learn.microsoft.com/en-us/azure/ai-services/document-intelligence/concept-accuracy-confidence)
+
+#### Language Support
+[Language support: document analysis](https://learn.microsoft.com/en-us/azure/ai-services/document-intelligence/language-support-ocr?view=doc-intel-4.0.0&preserve-view=true&tabs=read-print%2Clayout-print%2Cgeneral)
+
+[Language support: prebuilt models](https://learn.microsoft.com/en-us/azure/ai-services/document-intelligence/language-support-prebuilt?view=doc-intel-4.0.0&tabs=languages%2Cthermal)
+
+[Language support: custom models](https://learn.microsoft.com/en-us/azure/ai-services/document-intelligence/language-support-custom?view=doc-intel-4.0.0&tabs=printed)
+
+#### Document Intelligence Studio
+[What is Document Intelligence Studio?](https://learn.microsoft.com/en-us/azure/ai-services/document-intelligence/studio-overview?view=doc-intel-4.0.0)
+
+[Document Intelligence Studio Concept](https://learn.microsoft.com/en-us/azure/ai-services/document-intelligence/concept-document-intelligence-studio?view=doc-intel-4.0.0)
+
+
+
+
+
+
+
+
 
 
 
@@ -282,6 +354,20 @@ Valid for 6 months
 
 ## Certification
 [AI-102 Azure AI Engineer Associate](https://learn.microsoft.com/en-us/credentials/certifications/azure-ai-engineer/?practice-assessment-type=certification)
+[AI-102 Study Guide](https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/ai-102)
+[AI-102 Exam Prep videos](https://learn.microsoft.com/en-us/shows/exam-readiness-zone/preparing-for-ai-102-plan-and-manage-an-azure-ai-solution)
+[AI-102 Practice Exam](https://learn.microsoft.com/zh-tw/credentials/certifications/azure-ai-engineer/practice/assessment?assessment-type=practice&assessmentId=61&practice-assessment-type=certification)
+
+[Claiming your exam voucher - Video](https://aka.ms/esi-claim-voucher)
+
+[Exam duration and question types](https://learn.microsoft.com/en-us/credentials/support/exam-duration-exam-experience)
+[Exam scoring and score reports](https://learn.microsoft.com/en-us/credentials/certifications/exam-scoring-reports)
+[Unscheduled breaks now available in most exams without requesting in advance](https://techcommunity.microsoft.com/t5/microsoft-learn-blog/unscheduled-breaks-now-available-in-most-exams-without/ba-p/3287005)
+[Exam Sandbox](https://aka.ms/examdemo)
+[Microsoft Exam FAQ](https://docs.microsoft.com/zh-cn/learn/certifications/online-exams)
+[Renew your Microsoft Certifications for free. Stay Microsoft Certified!](https://aka.ms/RenewYourCertVideo)
+[Accessing Microsoft Learn during your certification exam](https://learn.microsoft.com/en-us/credentials/support/exam-duration-exam-experience#accessing-microsoft-learn-during-your-certification-exam)
+[Request exam accommodations](https://learn.microsoft.com/en-us/credentials/certifications/request-accommodations)
 
 ## Contact
 - Money Yu
