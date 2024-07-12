@@ -1,8 +1,8 @@
 resource "azurerm_cognitive_account" "openai" {
   kind                = "OpenAI"
-  location            = azurerm_resource_group.ai050.location
+  location            = azurerm_resource_group.ai102.location
   name                = "${local.lab_name}-aoai-${local.random_str}"
-  resource_group_name = azurerm_resource_group.ai050.name
+  resource_group_name = azurerm_resource_group.ai102.name
   sku_name            = "S0"
 
   tags = {
@@ -25,12 +25,12 @@ resource "azurerm_cognitive_deployment" "gpt35" {
 }
 
 resource "azurerm_cognitive_deployment" "gpt4" {
-  name                 = "gpt-4"
+  name                 = "gpt-4o"
   cognitive_account_id = azurerm_cognitive_account.openai.id
   model {
     format  = "OpenAI"
-    name    = "gpt-4"
-    version = "0125-Preview"
+    name    = "gpt-4o"
+    version = "2024-05-13"
   }
 
   scale {
@@ -54,8 +54,8 @@ resource "azurerm_cognitive_deployment" "dalle3" {
 
 resource "azurerm_storage_account" "stor" {
   name                     = "${local.lab_name}stor${local.random_str}"
-  resource_group_name      = azurerm_resource_group.ai050.name
-  location                 = azurerm_resource_group.ai050.location
+  resource_group_name      = azurerm_resource_group.ai102.name
+  location                 = azurerm_resource_group.ai102.location
   account_tier             = "Standard"
   account_replication_type = "LRS"
 
@@ -66,7 +66,7 @@ resource "azurerm_storage_account" "stor" {
 
 resource "azurerm_search_service" "aisearch" {
   name                = "${local.lab_name}-ai-search-${local.random_str}"
-  resource_group_name = azurerm_resource_group.ai050.name
-  location            = azurerm_resource_group.ai050.location
+  resource_group_name = azurerm_resource_group.ai102.name
+  location            = azurerm_resource_group.ai102.location
   sku                 = "standard"
 }

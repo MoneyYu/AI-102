@@ -28,11 +28,16 @@ variable "user_passowrd" {
 }
 
 locals {
-  group_name  = "AI050-${var.group_postfix}"
+  group_name  = "AI102-${var.group_postfix}"
   location    = "eastus"
   random_str  = "dog"
   admin_oid   = "b8e50bc5-6559-4643-a003-2807a8d707f7"
-  lab_name  = "lab"
+  lab01_name  = "lab01"
+  lab02_name  = "lab02"
+  lab03_name  = "lab03"
+  lab04_name  = "lab04"
+  lab05_name  = "lab05"
+  lab06_name  = "lab06"
 }
 
 data "http" "myip" {
@@ -54,8 +59,17 @@ resource "random_string" "rid" {
 # }
 
 # Create a resource group if it doesn't exist
-resource "azurerm_resource_group" "ai050" {
+resource "azurerm_resource_group" "ai102" {
   name     = local.group_name
+  location = local.location
+
+  tags = {
+    environment = local.group_name
+  }
+}
+
+resource "azurerm_resource_group" "demo" {
+  name     = "Demo${var.group_postfix}"
   location = local.location
 
   tags = {
