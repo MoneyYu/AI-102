@@ -8,8 +8,8 @@ GA: G-DXYJBX6BH8
 
 ## Course
 :::success
-Date: 20240408
-Course ID: 60408
+Date: 20240715
+Course ID: 64776
 :::
 
 :::info
@@ -28,7 +28,7 @@ Course Survey: [https://aka.ms/ai102survey](https://aka.ms/ai102survey)
 ### Skillable lab system
 [ESI Labs](https://aka.ms/esilab)
 :::success
-Training key: 42CA80E02F314526
+Training key: 0CD8AD2972584806
 :::
 
 :::info

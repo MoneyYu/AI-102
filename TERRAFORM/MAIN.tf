@@ -10,7 +10,11 @@ terraform {
 }
 
 provider "azurerm" {
-  features {}
+  features {
+    cognitive_account {
+      purge_soft_delete_on_destroy = true
+    }
+  }
 }
 
 variable "group_postfix" {
@@ -28,16 +32,16 @@ variable "user_passowrd" {
 }
 
 locals {
-  group_name  = "AI102-${var.group_postfix}"
-  location    = "eastus"
-  random_str  = "dog"
-  admin_oid   = "b8e50bc5-6559-4643-a003-2807a8d707f7"
-  lab01_name  = "lab01"
-  lab02_name  = "lab02"
-  lab03_name  = "lab03"
-  lab04_name  = "lab04"
-  lab05_name  = "lab05"
-  lab06_name  = "lab06"
+  group_name = "AI102-${var.group_postfix}"
+  location   = "eastus"
+  random_str = "dog"
+  admin_oid  = "b8e50bc5-6559-4643-a003-2807a8d707f7"
+  lab01_name = "lab01"
+  lab02_name = "lab02"
+  lab03_name = "lab03"
+  lab04_name = "lab04"
+  lab05_name = "lab05"
+  lab06_name = "lab06"
 }
 
 data "http" "myip" {
@@ -68,11 +72,11 @@ resource "azurerm_resource_group" "ai102" {
   }
 }
 
-resource "azurerm_resource_group" "demo" {
-  name     = "Demo${var.group_postfix}"
-  location = local.location
+# resource "azurerm_resource_group" "demo" {
+#   name     = "Demo${var.group_postfix}"
+#   location = local.location
 
-  tags = {
-    environment = local.group_name
-  }
-}
+#   tags = {
+#     environment = local.group_name
+#   }
+# }

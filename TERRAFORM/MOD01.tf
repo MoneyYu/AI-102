@@ -4,6 +4,10 @@ resource "azurerm_cognitive_account" "lab01" {
   resource_group_name = azurerm_resource_group.ai102.name
   sku_name            = "S0"
   kind                = "CognitiveServices"
+
+  tags = {
+    environment = local.group_name
+  }
 }
 
 # https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/container_group#environment_variables
@@ -22,12 +26,13 @@ resource "azurerm_container_group" "lab01" {
     cpu    = "1"
     memory = "12"
 
-    environment_variables {
-
+    environment_variables = {
+      Eula = "accept"
     }
 
-    secure_environment_variables {
-
+    secure_environment_variables = {
+      ApiKey  = azurerm_cognitive_account.lab01.primary_access_key
+      Billing = azurerm_cognitive_account.lab01.endpoint
     }
 
     ports {

@@ -1,7 +1,7 @@
 resource "azurerm_cognitive_account" "openai" {
   kind                = "OpenAI"
   location            = azurerm_resource_group.ai102.location
-  name                = "${local.lab_name}-aoai-${local.random_str}"
+  name                = "${local.lab04_name}-aoai-${local.random_str}"
   resource_group_name = azurerm_resource_group.ai102.name
   sku_name            = "S0"
 
@@ -53,7 +53,7 @@ resource "azurerm_cognitive_deployment" "dalle3" {
 }
 
 resource "azurerm_storage_account" "stor" {
-  name                     = "${local.lab_name}stor${local.random_str}"
+  name                     = "${local.lab04_name}stor${local.random_str}"
   resource_group_name      = azurerm_resource_group.ai102.name
   location                 = azurerm_resource_group.ai102.location
   account_tier             = "Standard"
@@ -65,8 +65,12 @@ resource "azurerm_storage_account" "stor" {
 }
 
 resource "azurerm_search_service" "aisearch" {
-  name                = "${local.lab_name}-ai-search-${local.random_str}"
+  name                = "${local.lab04_name}-ai-search-${local.random_str}"
   resource_group_name = azurerm_resource_group.ai102.name
   location            = azurerm_resource_group.ai102.location
   sku                 = "standard"
+
+  tags = {
+    environment = local.group_name
+  }
 }
